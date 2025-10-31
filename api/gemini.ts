@@ -99,9 +99,12 @@ app.post('/api/gemini/nearby-mosques', async (req: Request, res: Response) => {
       return res.status(400).json({ error: 'Missing coordinates' });
     }
 
+    console.log(`🕌 [Backend] Finding mosques for ${latitude}, ${longitude}${city ? ` (${city})` : ''}`);
+    const startTime = Date.now();
+
     const response = await ai.models.generateContent({
-      model: 'gemini-2.5-flash',
-      contents: `Find nearby mosques for coordinates (${latitude}, ${longitude})${city ? ` in ${city}` : ''}. Provide a JSON array of mosques with name, address, and distance.`,
+      model: 'gemini-2.5-flash-lite',
+      contents: `List ${city || 'nearby'} mosques near (${latitude}, ${longitude}) in JSON format only: [{"name":"","address":"","distance":"","uri":""}]. Include Google Maps URI for each mosque. Just the array, no markdown.`,
     });
 
     // Extract text from response safely
@@ -113,17 +116,47 @@ app.post('/api/gemini/nearby-mosques', async (req: Request, res: Response) => {
       content = (part as any).text || '';
     }
 
+    console.log(`🕌 [Backend] Gemini response received in ${Date.now() - startTime}ms:`, content);
+
     // Try to parse as JSON, fallback to raw text
     let mosques;
     try {
-      // Handle markdown code blocks
-      const cleanContent = content.replace(/```json\n?|\n?```/g, '').trim();
+      // Handle markdown code blocks and clean up
+      const cleanContent = content
+        .replace(/```json\n?|\n?```/g, '') // Remove markdown code blocks
+        .replace(/```\n?|\n?```/g, '') // Remove other code blocks
+        .trim();
+      
+      console.log(`🕌 [Backend] Cleaned content:`, cleanContent);
+      
       mosques = JSON.parse(cleanContent);
-    } catch {
-      mosques = { raw: content };
+      
+      // If parsed result is an array, keep it as-is
+      // If it's an object, check if it has a mosques property
+      if (Array.isArray(mosques)) {
+        console.log(`🕌 [Backend] Got array of ${mosques.length} mosques`);
+      } else if (typeof mosques === 'object' && mosques !== null && 'mosques' in mosques) {
+        console.log(`🕌 [Backend] Got object with mosques property`);
+        // Already in correct format
+      } else if (typeof mosques === 'object' && mosques !== null) {
+        console.log(`🕌 [Backend] Got object, wrapping in mosques property`);
+        mosques = { mosques: mosques };
+      }
+    } catch (parseError) {
+      console.error(`🕌 [Backend] JSON parse failed:`, parseError);
+      console.error(`🕌 [Backend] Raw content was:`, content);
+      mosques = { mosques: [], raw: content, error: 'Failed to parse Gemini response' };
     }
 
-    res.json({ mosques });
+    // Ensure response always has { mosques: [...] } format
+    const finalResponse = Array.isArray(mosques) 
+      ? { mosques }
+      : (typeof mosques === 'object' && mosques !== null)
+      ? mosques
+      : { mosques: [], error: 'Invalid response format' };
+
+    console.log(`🕌 [Backend] Sending response (${Date.now() - startTime}ms total):`, finalResponse);
+    res.json(finalResponse);
   } catch (error) {
     console.error('Nearby mosques error:', error);
     res.status(500).json({ error: 'Failed to find nearby mosques', details: String(error) });

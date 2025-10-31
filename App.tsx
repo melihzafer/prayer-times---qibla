@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState, useMemo } from 'react';
 import Header from './components/Header';
 import PrayerTimesDisplay from './components/PrayerTimesDisplay';
 import QiblaCompass from './components/QiblaCompass';
@@ -8,6 +8,7 @@ import { CALCULATION_METHODS } from './constants';
 import { translations } from './i18n';
 import { Translator, UserProfile } from './types';
 import NearbyMosques from './components/NearbyMosques';
+import MosquesModal from './components/MosquesModal';
 import SpecialDaysCalendar from './components/SpecialDaysCalendar';
 import { CalendarDaysIcon } from './components/Icons';
 import NotificationToast from './components/NotificationToast';
@@ -54,6 +55,7 @@ const App: React.FC = () => {
   } = actions;
 
   const [showCalendar, setShowCalendar] = useState(false);
+  const [showMosquesModal, setShowMosquesModal] = useState(false);
   
   const t: Translator = useCallback((key, ...args) => {
     const langTranslations = translations[language] || translations['en'];
@@ -68,6 +70,12 @@ const App: React.FC = () => {
     document.documentElement.lang = language;
     document.documentElement.dir = language === 'ar' ? 'rtl' : 'ltr';
   }, [language]);
+
+  // Stabilize coordinates to prevent NearbyMosques from remounting
+  const stableCoordinates = useMemo(() => coordinates, [
+    coordinates?.latitude,
+    coordinates?.longitude
+  ]);
 
 
   const MainContent: React.FC = () => {
@@ -117,7 +125,7 @@ const App: React.FC = () => {
           togglePrayerNotification={togglePrayerNotification}
         />
         <QiblaCompass direction={qiblaDirection} t={t} />
-        {coordinates && <NearbyMosques coordinates={coordinates} t={t} />}
+        {stableCoordinates && <NearbyMosques onOpenModal={() => setShowMosquesModal(true)} t={t} />}
 
       </div>
     );
@@ -166,7 +174,15 @@ const App: React.FC = () => {
           <p>{t('footerText')}</p>
         </footer>
       </div>
-      { notification && <NotificationToast prayerName={t(notification.prayerName)} time={notification.time} onClose={clearNotification} /> }
+      {notification && <NotificationToast prayerName={t(notification.prayerName)} time={notification.time} onClose={clearNotification} />}
+      {stableCoordinates && (
+        <MosquesModal
+          isOpen={showMosquesModal}
+          coordinates={stableCoordinates}
+          t={t}
+          onClose={() => setShowMosquesModal(false)}
+        />
+      )}
     </div>
   );
 };
