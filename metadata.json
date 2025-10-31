@@ -1,0 +1,7 @@
+{
+  "name": "Prayer Times & Qibla",
+  "description": "A Progressive Web Application (PWA) that displays Prayer Times (Namaz Vakitleri), the Qibla Direction, and the Islamic (Hijri) Calendar based on the user's current location or a searched city.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}

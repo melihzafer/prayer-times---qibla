@@ -1,0 +1,39 @@
+{
+  "name": "prayer-times-&-qibla",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "dev:api": "node --loader ts-node/esm api/gemini.ts",
+    "dev:all": "node dev-runner.js",
+    "dev:windows": ".\\dev-all.bat",
+    "build": "vite build",
+    "build:api": "tsc --noEmit api/gemini.ts",
+    "preview": "vite preview",
+    "test": "vitest",
+    "test:ui": "vitest --ui",
+    "test:coverage": "vitest --coverage"
+  },
+  "dependencies": {
+    "@google/genai": "^1.28.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.0",
+    "@types/express": "^4.17.21",
+    "@types/node": "^22.14.0",
+    "@vitejs/plugin-react": "^5.0.0",
+    "@vitest/ui": "^4.0.6",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "jsdom": "^27.1.0",
+    "ts-node": "^10.9.2",
+    "typescript": "~5.8.2",
+    "vite": "^6.2.0",
+    "vitest": "^4.0.6"
+  }
+}
