@@ -63,12 +63,34 @@ export interface IslamicEvent {
   nameKey: string; // key for translation
 }
 
+export interface SunnahComHadith {
+  metadata: {
+    name: string; // e.g., "Sahih al-Bukhari"
+    section: {
+      [key: string]: string;
+    };
+  };
+  hadiths: {
+    hadithnumber: number;
+    arabicnumber: number;
+    text: string; // English text
+    grades: {
+      name: string; // e.g., "Al-Albani"
+      grade: string; // e.g., "Sahih"
+    }[];
+    reference: {
+      book: number;
+      hadith: number;
+    };
+  }[];
+}
+
 export interface HadithData {
-  id: string;
   hadith_english: string;
   hadith_arabic: string;
   hadith_turkish?: string;
-  book: string;
-  chapter_english: string;
   refno: string;
+  book: string;
+  grade: string;
+  url: string;
 }

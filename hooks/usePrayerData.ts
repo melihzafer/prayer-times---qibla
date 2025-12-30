@@ -140,7 +140,7 @@ export const usePrayerData = () => {
 
    // Effect for checking notifications
   useEffect(() => {
-    if (!state.prayerTimes || !state.user.isLoggedIn) return;
+    if (!state.prayerTimes) return;
 
     const checkNotifications = () => {
         const now = new Date();
@@ -153,7 +153,16 @@ export const usePrayerData = () => {
         
         for (const prayerName in state.user.notificationPrefs) {
             if (state.user.notificationPrefs[prayerName] && state.prayerTimes && state.prayerTimes[prayerName] === currentTime) {
+                // Trigger In-App Toast
                 updateState({ notification: { prayerName, time: state.prayerTimes[prayerName] }, lastNotifiedTime: currentTime });
+                
+                // Trigger System Notification if permitted
+                if (Notification.permission === "granted") {
+                    new Notification(`Time for ${prayerName}`, {
+                        body: `It is now time for ${prayerName} prayer (${state.prayerTimes[prayerName]})`,
+                        icon: '/favicon.svg' // Assuming favicon exists
+                    });
+                }
             }
         }
     };
@@ -164,7 +173,7 @@ export const usePrayerData = () => {
     checkNotifications();
 
     return () => clearInterval(interval);
-  }, [state.prayerTimes, state.user.isLoggedIn, state.user.notificationPrefs, state.lastNotifiedTime]);
+  }, [state.prayerTimes, state.user.notificationPrefs, state.lastNotifiedTime]);
 
   const handleSearch = async (query: string) => {
     updateState({ loading: `Searching for ${query}...`, error: null });
@@ -281,7 +290,13 @@ export const usePrayerData = () => {
   };
 
   const togglePrayerNotification = (prayerName: string) => {
-    const newPrefs = { ...state.user.notificationPrefs, [prayerName]: !state.user.notificationPrefs[prayerName] };
+    const isEnabling = !state.user.notificationPrefs[prayerName];
+    
+    if (isEnabling && Notification.permission !== "granted" && Notification.permission !== "denied") {
+        Notification.requestPermission();
+    }
+
+    const newPrefs = { ...state.user.notificationPrefs, [prayerName]: isEnabling };
     const newProfile = { ...state.user, notificationPrefs: newPrefs };
     updateState({ user: newProfile });
     localStorage.setItem('userProfile', JSON.stringify(newProfile));

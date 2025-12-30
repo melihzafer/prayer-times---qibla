@@ -88,13 +88,13 @@ const PrayerTimesDisplay: React.FC<PrayerTimesDisplayProps> = ({
               }`
             }
           >
-            <div className="flex items-center space-x-3 rtl:space-x-reverse">
-               <div className={`${isToday && nextPrayer?.name === name ? 'text-white' : 'text-blue-500'}`}>{prayerIcons[name] || <ClockIcon/>}</div>
-               <span className="font-semibold text-lg">{t(name)}</span>
-            </div>
+             <div className="flex items-center space-x-3 rtl:space-x-reverse">
+                <div className={`${isToday && nextPrayer?.name === name ? 'text-white' : 'text-blue-600 dark:text-blue-400'}`}>{prayerIcons[name] || <ClockIcon/>}</div>
+                <span className="font-semibold text-lg">{t(name)}</span>
+             </div>
             <div className="flex items-center space-x-2 rtl:space-x-reverse">
                 <span className="font-mono text-lg">{time}</span>
-                {user.isLoggedIn && name !== 'Sunrise' && (
+                {name !== 'Sunrise' && (
                   <button onClick={() => togglePrayerNotification(name)} aria-label={t('toggleNotification')}>
                     {user.notificationPrefs[name] ? <BellIcon className="w-5 h-5"/> : <BellSlashIcon className="w-5 h-5"/>}
                   </button>

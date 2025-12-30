@@ -34,10 +34,10 @@ const QiblaCompass: React.FC<QiblaCompassProps> = ({ direction, t }) => {
           className="w-full h-full rounded-full bg-gray-100 dark:bg-gray-700 border-4 border-gray-300 dark:border-gray-600 flex items-center justify-center transition-transform duration-100"
           style={{ transform: `rotate(${compassRotation}deg)` }}
         >
-          <span className="absolute top-2 text-sm font-bold text-red-500">N</span>
-          <span className="absolute bottom-2 text-sm font-bold">S</span>
-          <span className="absolute left-2 text-sm font-bold">W</span>
-          <span className="absolute right-2 text-sm font-bold">E</span>
+          <span className="absolute top-2 text-sm font-bold text-red-500 dark:text-red-400">N</span>
+          <span className="absolute bottom-2 text-sm font-bold text-gray-700 dark:text-gray-200">S</span>
+          <span className="absolute left-2 text-sm font-bold text-gray-700 dark:text-gray-200">W</span>
+          <span className="absolute right-2 text-sm font-bold text-gray-700 dark:text-gray-200">E</span>
           <div className="w-0.5 h-full bg-gray-300 dark:bg-gray-600 absolute"></div>
           <div className="h-0.5 w-full bg-gray-300 dark:bg-gray-600 absolute"></div>
         

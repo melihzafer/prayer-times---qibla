@@ -54,6 +54,7 @@ export const en = {
 
   // Hadith of the Day
   hadithOfTheDay: 'Hadith of the Day',
+  remindersFor: 'Reminders for',
   loadingHadith: 'Fetching Hadith...',
   hadithError: 'Could not fetch Hadith of the Day. Please try again later.',
   source: 'Source',

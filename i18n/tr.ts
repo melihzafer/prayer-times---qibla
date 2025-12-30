@@ -54,6 +54,7 @@ export const tr = {
   
   // Hadith of the Day
   hadithOfTheDay: 'Günün Hadisi',
+  remindersFor: 'Hatırlatmalar:',
   loadingHadith: 'Hadis getiriliyor...',
   hadithError: 'Günün Hadisi getirilemedi. Lütfen daha sonra tekrar deneyin.',
   source: 'Kaynak',

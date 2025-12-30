@@ -54,6 +54,7 @@ export const ar = {
 
   // Hadith of the Day
   hadithOfTheDay: 'حديث اليوم',
+  remindersFor: 'تذكير لـ',
   loadingHadith: 'جارٍ جلب الحديث...',
   hadithError: 'تعذر جلب حديث اليوم. يرجى المحاولة مرة أخرى لاحقاً.',
   source: 'المصدر',
