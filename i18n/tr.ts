@@ -43,6 +43,15 @@ export const tr = {
   liveCompassActive: 'Canlı Pusula Aktif',
   compassNotSupported: 'Cihaz yönlendirme bu cihazda desteklenmiyor.',
   permissionDenied: 'Cihaz yönlendirme izni reddedildi.',
+  cameraError: 'Kameraya erişilemedi. Lütfen izinleri kontrol edin.',
+  cameraPermissionDenied: 'Kamera izni reddedildi. Canlı Pusulayı kullanmak için etkinleştirin.',
+  calibrateCompass: 'Pusula Kalibrasyonu',
+  resetCalibration: 'Kalibrasyonu Sıfırla',
+  qiblaFound: 'Kıble Bulundu!',
+  almostThere: 'Neredeyse Tamam...',
+  keepSearching: 'Dönmeye Devam Et...',
+  away: 'kaldı',
+  googleQiblaFinder: 'Google Kıble Bulucu',
 
   // Nearby Mosques
   findNearbyMosques: 'Yakındaki Camileri Bul',

@@ -43,6 +43,15 @@ export const ar = {
   liveCompassActive: 'البوصلة الحية نشطة',
   compassNotSupported: 'اتجاه الجهاز غير مدعوم على هذا الجهاز.',
   permissionDenied: 'تم رفض إذن الوصول إلى اتجاه الجهاز.',
+  cameraError: 'تعذر الوصول إلى الكاميرا. يرجى التحقق من الأذونات.',
+  cameraPermissionDenied: 'تم رفض إذن الكاميرا. قم بتمكينه لاستخدام البوصلة الحية.',
+  calibrateCompass: 'معايرة البوصلة',
+  resetCalibration: 'إعادة ضبط المعايرة',
+  qiblaFound: 'تم العثور على القبلة!',
+  almostThere: 'اقتربت...',
+  keepSearching: 'استمر في الدوران...',
+  away: 'متبقية',
+  googleQiblaFinder: 'محدد القبلة من Google',
 
   // Nearby Mosques
   findNearbyMosques: 'البحث عن مساجد قريبة',

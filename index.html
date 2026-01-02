@@ -9,6 +9,19 @@
     <script>
       tailwind.config = {
         darkMode: 'class',
+        theme: {
+          extend: {
+            animation: {
+              shine: 'shine 1.5s infinite',
+            },
+            keyframes: {
+              shine: {
+                '0%': { left: '-100%' },
+                '100%': { left: '200%' },
+              }
+            }
+          }
+        }
       }
     </script>
     <meta name="description" content="Prayer Times, Qibla Direction, and Islamic Calendar">

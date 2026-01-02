@@ -32,7 +32,7 @@ export const useDeviceOrientation = (): DeviceOrientation => {
   const [permissionState, setPermissionState] = useState<PermissionState>('prompt');
 
   const handleOrientation = useCallback((event: DeviceOrientationEvent) => {
-    console.log('🧭 Device Orientation Event:', { alpha: event.alpha, beta: event.beta, gamma: event.gamma });
+    console.log('🧭 Device Orientation Event:', { alpha: event.alpha, beta: event.beta, gamma: event.gamma, absolute: (event as any).absolute });
     
     // webkitCompassHeading is for iOS Safari (0-360, where 0 is North)
     const compassHeading = (event as any).webkitCompassHeading;
@@ -42,12 +42,25 @@ export const useDeviceOrientation = (): DeviceOrientation => {
       return;
     }
     
-    // Standard alpha property (0-360)
-    // On Android: 0 = North, 90 = East, 180 = South, 270 = West
-    // We want: 0 = North when facing North, so heading = alpha
+    // For Android/Chrome: Use alpha, but only when phone is held upright
+    // Beta values:
+    //   0° = phone flat (camera pointing at sky) - BAD, freeze
+    //   90° = phone upright (camera pointing forward) - GOOD, use
+    //   180° = phone upside down flat - BAD, freeze
     if (event.alpha !== null && event.alpha !== undefined) {
-      console.log('📱 Android Alpha:', event.alpha);
-      setHeading(event.alpha);
+      const beta = event.beta ?? 0;
+      
+      // Only update when phone is held somewhat upright (beta between 30° and 150°)
+      // This is the "camera pointing forward" zone
+      // Freeze when pointing at sky (beta < 30) or ground (beta > 150)
+      if (beta > 30 && beta < 150) {
+        // Use alpha directly - test without inversion
+        const heading = event.alpha;
+        
+        console.log('📱 Heading:', heading.toFixed(1), 'alpha:', event.alpha.toFixed(1), 'beta:', beta.toFixed(1));
+        setHeading(heading);
+      }
+      // When pointing at sky/ground, heading stays frozen at last good value
     }
   }, []);
 
@@ -76,8 +89,14 @@ export const useDeviceOrientation = (): DeviceOrientation => {
       console.log('ℹ️ requestPermission not available. Using standard API...');
       if ('DeviceOrientationEvent' in window) {
         setPermissionState('granted');
-        console.log('✅ DeviceOrientationEvent supported! Adding listener...');
-        window.addEventListener('deviceorientation', handleOrientation);
+        // Prefer deviceorientationabsolute for true north on Android/Chrome
+        if ('ondeviceorientationabsolute' in window) {
+          console.log('✅ Using deviceorientationabsolute for true north!');
+          window.addEventListener('deviceorientationabsolute', handleOrientation as EventListener);
+        } else {
+          console.log('✅ Using standard deviceorientation (may not be absolute)');
+          window.addEventListener('deviceorientation', handleOrientation);
+        }
       } else {
         setError('compassNotSupported');
         console.error('❌ Device orientation not supported');
@@ -89,6 +108,7 @@ export const useDeviceOrientation = (): DeviceOrientation => {
     // Cleanup listener on component unmount
     return () => {
       window.removeEventListener('deviceorientation', handleOrientation);
+      window.removeEventListener('deviceorientationabsolute', handleOrientation as EventListener);
     };
   }, [handleOrientation]);
 

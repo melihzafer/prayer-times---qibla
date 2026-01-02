@@ -43,6 +43,15 @@ export const en = {
   liveCompassActive: 'Live Compass Active',
   compassNotSupported: 'Device orientation is not supported on this device.',
   permissionDenied: 'Permission for device orientation was denied.',
+  cameraError: 'Unable to access camera. Please check permissions.',
+  cameraPermissionDenied: 'Camera permission was denied. Enable it to use Live Compass.',
+  calibrateCompass: 'Calibrate Compass',
+  resetCalibration: 'Reset Calibration',
+  qiblaFound: 'Qibla Found!',
+  almostThere: 'Almost There...',
+  keepSearching: 'Keep Turning...',
+  away: 'away',
+  googleQiblaFinder: 'Google Qibla Finder',
 
   // Nearby Mosques
   findNearbyMosques: 'Find Nearby Mosques',
