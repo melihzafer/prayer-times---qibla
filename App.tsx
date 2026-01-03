@@ -100,7 +100,7 @@ const App: React.FC = () => {
             />
           } />
           
-          <Route path="/qibla" element={<Qibla direction={qiblaDirection} t={t} />} />
+          <Route path="/qibla" element={<Qibla direction={qiblaDirection} location={coordinates} t={t} />} />
           
           <Route path="/inspiration" element={<Inspiration t={t} />} />
           

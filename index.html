@@ -5,14 +5,30 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Prayer Times & Qibla</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
         darkMode: 'class',
         theme: {
           extend: {
+            fontFamily: {
+              outfit: ['Outfit', 'sans-serif'],
+              inter: ['Inter', 'sans-serif'],
+            },
+            colors: {
+              brand: {
+                primary: '#6366f1',   // Vibrant Indigo
+                secondary: '#8b5cf6', // Vibrant Violet
+                accent: '#06b6d4',    // Cyan
+                dark: '#0f172a',      // Deep Navy
+              }
+            },
             animation: {
               shine: 'shine 1.5s infinite',
+              'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
             },
             keyframes: {
               shine: {
@@ -24,6 +40,44 @@
         }
       }
     </script>
+    <style>
+      :root {
+        --glass-bg: rgba(255, 255, 255, 0.7);
+        --glass-border: rgba(255, 255, 255, 0.2);
+      }
+      .dark {
+        --glass-bg: rgba(15, 23, 42, 0.7);
+        --glass-border: rgba(255, 255, 255, 0.05);
+      }
+      body {
+        font-family: 'Inter', sans-serif;
+      }
+      h1, h2, h3, h4, .font-outfit {
+        font-family: 'Outfit', sans-serif;
+      }
+      .glass {
+        background: var(--glass-bg);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid var(--glass-border);
+      }
+      /* Keyframes for a Figure-8 / Infinity motion */
+      /* Path is roughly: Center -> Right Loop -> Center -> Left Loop -> Center */
+      @keyframes figure8 {
+        0%   { transform: translate(0, 0); }
+        12%  { transform: translate(20px, -10px); }
+        25%  { transform: translate(40px, 0); }
+        37%  { transform: translate(20px, 10px); }
+        50%  { transform: translate(0, 0); }
+        62%  { transform: translate(-20px, -10px); }
+        75%  { transform: translate(-40px, 0); }
+        87%  { transform: translate(-20px, 10px); }
+        100% { transform: translate(0, 0); }
+      }
+      .calibration-animation {
+        animation: figure8 4s linear infinite;
+      }
+    </style>
     <meta name="description" content="Prayer Times, Qibla Direction, and Islamic Calendar">
     <meta name="theme-color" content="#1a202c">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
@@ -64,6 +118,7 @@
   <body class="bg-gray-100 dark:bg-gray-900 transition-colors duration-300">
     <div id="root"></div>
     <div id="notification-portal"></div>
+    <div id="ar-portal"></div>
     <script type="module" src="/index.tsx"></script>
   </body>
 </html>

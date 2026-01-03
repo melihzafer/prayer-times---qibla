@@ -43,8 +43,8 @@ export const en = {
   liveCompassActive: 'Live Compass Active',
   compassNotSupported: 'Device orientation is not supported on this device.',
   permissionDenied: 'Permission for device orientation was denied.',
-  cameraError: 'Unable to access camera. Please check permissions.',
-  cameraPermissionDenied: 'Camera permission was denied. Enable it to use Live Compass.',
+
+
   calibrateCompass: 'Calibrate Compass',
   resetCalibration: 'Reset Calibration',
   qiblaFound: 'Qibla Found!',
@@ -52,6 +52,19 @@ export const en = {
   keepSearching: 'Keep Turning...',
   away: 'away',
   googleQiblaFinder: 'Google Qibla Finder',
+  howToCalibrate: 'How to Calibrate?',
+  calibrateInstructions: 'Please wave your phone in a figure-8 motion as shown to calibrate the compass sensor.',
+  imReady: "I'm Ready",
+  calibrationGuideStep1: 'Hold your phone flat in front of you.',
+  calibrationGuideStep2: 'Wave it in a figure-8 motion.',
+  calibrationGuideStep3: 'Repeat until the accuracy improves.',
+  usingGoogleQibla: 'Using Google Qibla Finder',
+  googleQiblaDesc: 'For verification, you can compare with Google Qibla Finder. If our compass accuracy is low, Google can help recalibrate your device sensors.',
+  dontShowAgain: "Don't show again",
+  connectionNotSecure: "Connection Not Secure",
+  insecureContextWarning: "Your browser blocks Compass and Camera access on this connection. To fix this, please use 'localhost' or an HTTPS connection.",
+  cameraError: "Camera Error",
+  cameraPermissionDenied: "Access to camera was denied or is blocked by your browser.",
 
   // Nearby Mosques
   findNearbyMosques: 'Find Nearby Mosques',

@@ -4,28 +4,12 @@ import { KAABA_COORDINATES, PRAYER_NAMES } from '../constants';
 
 // --- Geo Helpers ---
 
-const degreesToRadians = (degrees: number): number => {
-  return degrees * (Math.PI / 180);
-};
+import { Coordinates as AdhanCoordinates, Qibla } from 'adhan';
 
 export const calculateQiblaDirection = (userCoords: Coordinates): number => {
-  const userLatRad = degreesToRadians(userCoords.latitude);
-  const userLonRad = degreesToRadians(userCoords.longitude);
-  const kaabaLatRad = degreesToRadians(KAABA_COORDINATES.latitude);
-  const kaabaLonRad = degreesToRadians(KAABA_COORDINATES.longitude);
-
-  const lonDiff = kaabaLonRad - userLonRad;
-
-  const y = Math.sin(lonDiff) * Math.cos(kaabaLatRad);
-  const x = Math.cos(userLatRad) * Math.sin(kaabaLatRad) - Math.sin(userLatRad) * Math.cos(kaabaLatRad) * Math.cos(lonDiff);
-
-  let bearingRad = Math.atan2(y, x);
-  let bearingDeg = (bearingRad * 180) / Math.PI;
-
-  // Normalize to 0-360
-  bearingDeg = (bearingDeg + 360) % 360;
-
-  return bearingDeg;
+  const coordinates = new AdhanCoordinates(userCoords.latitude, userCoords.longitude);
+  const qibla = Qibla(coordinates);
+  return qibla;
 };
 
 // --- Time Helpers ---

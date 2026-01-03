@@ -43,8 +43,8 @@ export const tr = {
   liveCompassActive: 'Canlı Pusula Aktif',
   compassNotSupported: 'Cihaz yönlendirme bu cihazda desteklenmiyor.',
   permissionDenied: 'Cihaz yönlendirme izni reddedildi.',
-  cameraError: 'Kameraya erişilemedi. Lütfen izinleri kontrol edin.',
-  cameraPermissionDenied: 'Kamera izni reddedildi. Canlı Pusulayı kullanmak için etkinleştirin.',
+
+
   calibrateCompass: 'Pusula Kalibrasyonu',
   resetCalibration: 'Kalibrasyonu Sıfırla',
   qiblaFound: 'Kıble Bulundu!',
@@ -52,6 +52,19 @@ export const tr = {
   keepSearching: 'Dönmeye Devam Et...',
   away: 'kaldı',
   googleQiblaFinder: 'Google Kıble Bulucu',
+  howToCalibrate: 'Nasıl Kalibre Edilir?',
+  calibrateInstructions: 'Pusula sensörünü kalibre etmek için lütfen telefonunuzu gösterildiği gibi 8 şekli çizecek şekilde sallayın.',
+  imReady: 'Hazırım',
+  calibrationGuideStep1: 'Telefonunuzu önünüzde düz bir şekilde tutun.',
+  calibrationGuideStep2: '8 şekli çizecek şekilde sallayın.',
+  calibrationGuideStep3: 'Hassasiyet artana kadar tekrarlayın.',
+  usingGoogleQibla: "Google Kıble Bulucu'yu Kullanma",
+  googleQiblaDesc: "Doğrulama için Google Kıble Bulucu ile karşılaştırabilirsiniz. Eğer pusula hassasiyeti düşükse, bu araç cihaz sensörlerinizi kalibre etmeye yardımcı olabilir.",
+  dontShowAgain: "Bir daha gösterme",
+  connectionNotSecure: "Bağlantı Güvenli Değil",
+  insecureContextWarning: "Tarayıcınız bu bağlantıda Pusula ve Kamera erişimini engelliyor. Düzeltmek için lütfen 'localhost' veya HTTPS bağlantısı kullanın.",
+  cameraError: "Kamera Hatası",
+  cameraPermissionDenied: "Kamera erişimi reddedildi veya tarayıcınız tarafından engellendi.",
 
   // Nearby Mosques
   findNearbyMosques: 'Yakındaki Camileri Bul',
