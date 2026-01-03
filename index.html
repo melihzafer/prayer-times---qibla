@@ -9,6 +9,24 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Maps Places API (loaded dynamically if API key exists) -->
+    <script>
+      (function() {
+        // Check for API key from Vite env (injected at build time)
+        var apiKey = '%VITE_GOOGLE_MAPS_KEY%';
+        // If the placeholder wasn't replaced, it means no key
+        if (apiKey && apiKey !== '' && !apiKey.includes('%VITE_')) {
+          var script = document.createElement('script');
+          script.src = 'https://maps.googleapis.com/maps/api/js?key=' + apiKey + '&libraries=places';
+          script.async = true;
+          script.defer = true;
+          document.head.appendChild(script);
+          console.log('🗺️ Google Maps API loading...');
+        } else {
+          console.log('🗺️ No Google Maps API key configured - using fallback mode');
+        }
+      })();
+    </script>
     <script>
       tailwind.config = {
         darkMode: 'class',

@@ -94,3 +94,14 @@ export interface HadithData {
   grade: string;
   url: string;
 }
+
+export interface Mosque {
+  id: string;           // OSM element ID or Google place_id
+  name: string;
+  address: string;
+  distance?: string;    // Distance from user (e.g., "1.2 km")
+  rating?: number;
+  userRatingsTotal?: number;
+  isOpen?: boolean;
+  location: { lat: number; lng: number };
+}
