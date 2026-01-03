@@ -100,6 +100,7 @@ export const en = {
   
   // Islamic Event Names
   islamicNewYear: 'Islamic New Year',
+  regaibKandili: 'Laylat al-Raghaib',
   dayOfAshura: 'Day of Ashura',
   mawlidinNabi: 'Mawlid al-Nabi al-Sharif',
   israAndMiraj: 'Isra and Mi\'raj',

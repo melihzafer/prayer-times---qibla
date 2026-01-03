@@ -100,6 +100,7 @@ export const tr = {
 
   // Islamic Event Names
   islamicNewYear: 'Hicri Yılbaşı',
+  regaibKandili: 'Regaip Kandili',
   dayOfAshura: 'Aşure Günü',
   mawlidinNabi: 'Mevlid Kandili',
   israAndMiraj: 'Miraç Kandili',

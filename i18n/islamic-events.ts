@@ -19,6 +19,11 @@ export const islamicEvents: IslamicEvent[] = [
         nameKey: 'mawlidinNabi'
     },
     { 
+        hijriDate: '1 Rajab 1445',
+        gregorianDate: 'January 11, 2024',
+        nameKey: 'regaibKandili'
+    },
+    { 
         hijriDate: '27 Rajab 1445',
         gregorianDate: 'February 8, 2024',
         nameKey: 'israAndMiraj'
@@ -68,6 +73,11 @@ export const islamicEvents: IslamicEvent[] = [
         hijriDate: '12 Rabi al-Awwal 1446',
         gregorianDate: 'September 15, 2024',
         nameKey: 'mawlidinNabi'
+    },
+    { 
+        hijriDate: '2 Rajab 1446',
+        gregorianDate: 'January 2, 2025',
+        nameKey: 'regaibKandili'
     },
     { 
         hijriDate: '27 Rajab 1446',
@@ -121,6 +131,11 @@ export const islamicEvents: IslamicEvent[] = [
         nameKey: 'mawlidinNabi'
     },
     {
+        hijriDate: '5 Rajab 1447',
+        gregorianDate: 'December 25, 2025',
+        nameKey: 'regaibKandili'
+    },
+    {
         hijriDate: '27 Rajab 1447',
         gregorianDate: 'January 16, 2026',
         nameKey: 'israAndMiraj'
@@ -170,6 +185,11 @@ export const islamicEvents: IslamicEvent[] = [
         hijriDate: '12 Rabi al-Awwal 1448',
         gregorianDate: 'August 24, 2026',
         nameKey: 'mawlidinNabi'
+    },
+    {
+        hijriDate: '1 Rajab 1448',
+        gregorianDate: 'December 10, 2026',
+        nameKey: 'regaibKandili'
     },
     {
         hijriDate: '27 Rajab 1448',

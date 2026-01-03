@@ -31,7 +31,7 @@ const ai = new GoogleGenAI({
 app.use(cors({
   origin: process.env.NODE_ENV === 'production' 
     ? process.env.CLIENT_URL 
-    : 'http://localhost:5173', // Vite default port
+    : 'http://localhost:3000', // Vite default port
   credentials: true,
 }));
 app.use(express.json());
@@ -63,7 +63,7 @@ app.post('/api/gemini/translate', async (req: Request, res: Response) => {
 
     // Call Gemini API using SDK
     const response = await ai.models.generateContent({
-      model: 'gemini-2.5-flash',
+      model: 'gemini-1.5-flash',
       contents: `Translate the following text to ${targetLanguage}:\n\n${text}`,
     });
 

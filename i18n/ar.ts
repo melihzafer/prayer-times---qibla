@@ -100,6 +100,7 @@ export const ar = {
 
   // Islamic Event Names
   islamicNewYear: 'رأس السنة الهجرية',
+  regaibKandili: 'ليلة الرغائب',
   dayOfAshura: 'يوم عاشوراء',
   mawlidinNabi: 'المولد النبوي الشريف',
   israAndMiraj: 'الإسراء والمعراج',
