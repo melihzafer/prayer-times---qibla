@@ -1,4 +1,5 @@
 import { Coordinates, AladhanApiResponse, NominatimResult, HadithData } from '../types';
+import { CUSTOM_METHOD_MAPPINGS } from '../constants';
 
 const ALADHAN_API_URL = 'https://api.aladhan.com/v1/timings';
 const NOMINATIM_API_URL = 'https://nominatim.openstreetmap.org/search';
@@ -8,8 +9,12 @@ const SAHIH_BOOKS = ['bukhari', 'muslim'];
 export async function fetchPrayerTimesByCoords(coords: Coordinates, method: number, date: Date) {
   const { latitude, longitude } = coords;
   const dateString = date.toISOString().split('T')[0];
+  
+  // Resolve method ID if it's a custom mapping (e.g. 101 -> 13)
+  const apiMethod = CUSTOM_METHOD_MAPPINGS[method] ?? method;
+
   // Using ar.alafasy edition to get arabic month/weekday names in the response
-  const url = `${ALADHAN_API_URL}/${dateString}?latitude=${latitude}&longitude=${longitude}&method=${method}&edition=ar.alafasy`;
+  const url = `${ALADHAN_API_URL}/${dateString}?latitude=${latitude}&longitude=${longitude}&method=${apiMethod}&edition=ar.alafasy`;
   
   const response = await fetch(url);
   if (!response.ok) {
