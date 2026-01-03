@@ -309,7 +309,7 @@ const QiblaCompass: React.FC<QiblaCompassProps> = ({ direction, location, t }) =
                 className="p-4 bg-black/40 backdrop-blur-xl border border-white/20 rounded-2xl text-white hover:bg-black/60 active:scale-95 transition-all pointer-events-auto"
               >
                 <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 18L18 6M6 6l12 12" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>
             </div>
@@ -546,7 +546,7 @@ const QiblaCompass: React.FC<QiblaCompassProps> = ({ direction, location, t }) =
                >
                  <span>{t('googleQiblaFinder')}</span>
                  <svg className="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                  </svg>
                </a>
             </div>

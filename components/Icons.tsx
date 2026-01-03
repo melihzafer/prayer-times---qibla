@@ -34,7 +34,7 @@ type IconProps = {
 
 // Wrapper function to maintain existing interface
 const wrapIcon = (IconComponent: any, defaultClassName: string = "h-6 w-6") => {
-    return ({ className = defaultClassName, strokeWidth = 2 }: IconProps) => (
+    return ({ className = defaultClassName, strokeWidth = 0.8 }: IconProps) => (
         <IconComponent className={className} strokeWidth={strokeWidth} />
     );
 };

@@ -21,7 +21,7 @@ const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({ language, setLangua
         </span>
         <div className="ml-1 text-slate-400 dark:text-slate-500 group-hover/lang:text-brand-primary transition-colors">
           <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M19 9l-7 7-7-7" />
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 9l-7 7-7-7" />
           </svg>
         </div>
       </div>

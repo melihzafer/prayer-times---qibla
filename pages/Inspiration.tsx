@@ -14,7 +14,7 @@ const Inspiration: React.FC<InspirationProps> = ({ t }) => {
         <h1 className="text-4xl font-extrabold font-outfit text-brand-dark dark:text-white tracking-tighter">
           {t('inspiration')}
         </h1>
-        <div className="w-12 h-1 bg-brand-accent mx-auto rounded-full"></div>
+        <div className="w-12 h-1 bg-brand-primary mx-auto rounded-full"></div>
       </div>
 
       <div className="space-y-10">

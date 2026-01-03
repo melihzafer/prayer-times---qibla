@@ -135,7 +135,7 @@ const AsmaUlHusna: React.FC<AsmaUlHusnaProps> = ({ t }) => {
                                 className="p-4 rounded-[1.5rem] bg-white/50 dark:bg-brand-dark/50 border border-white/40 dark:border-white/10 text-slate-400 hover:text-brand-dark dark:hover:text-white hover:border-brand-primary/30 transition-all duration-300 group"
                             >
                                 <svg className="w-6 h-6 transform group-hover:rotate-90 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 18L18 6M6 6l12 12" />
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 18L18 6M6 6l12 12" />
                                 </svg>
                             </button>
                         </div>
