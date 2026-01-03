@@ -84,9 +84,10 @@ const HadithOfTheDay: React.FC<HadithOfTheDayProps> = ({ t }) => {
 
         if (hadith) {
             return (
-                <div className="space-y-4">
-                    <blockquote className="border-l-4 border-emerald-500 pl-4 italic text-gray-700 dark:text-gray-200 rtl:border-l-0 rtl:border-r-4 rtl:pl-0 rtl:pr-4">
-                        <p lang={t('languageCode')} dir={t('languageCode') === 'ar' ? 'rtl' : 'ltr'}>
+                <div className="space-y-6">
+                    <blockquote className="relative p-6 bg-brand-primary/5 rounded-2xl border border-brand-primary/10 italic text-gray-700 dark:text-gray-200 group-hover:bg-brand-primary/[0.07] transition-colors duration-300">
+                        <div className="absolute -top-4 -left-2 text-6xl text-brand-primary/10 font-serif opacity-30">"</div>
+                        <p className="text-lg leading-relaxed font-inter font-medium" lang={t('languageCode')} dir={t('languageCode') === 'ar' ? 'rtl' : 'ltr'}>
                            {getHadithTextForDisplay()}
                         </p>
                     </blockquote>
@@ -120,12 +121,19 @@ const HadithOfTheDay: React.FC<HadithOfTheDayProps> = ({ t }) => {
 
 
     return (
-        <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 mt-6">
-            <div className="flex items-center space-x-2 rtl:space-x-reverse mb-4">
-                <BookOpenIcon className="h-6 w-6 text-emerald-600 dark:text-emerald-400" />
-                <h2 className="text-xl font-bold">{t('hadithOfTheDay')}</h2>
+        <div className="glass bg-white/40 dark:bg-brand-dark/40 rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.1)] p-8 border border-white/40 dark:border-white/10 relative overflow-hidden group">
+            <div className="absolute top-0 right-0 w-32 h-32 bg-brand-primary/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-2xl font-inter"></div>
+            
+            <div className="flex items-center space-x-3 rtl:space-x-reverse mb-6 relative z-10 transition-transform duration-300">
+                <div className="p-3 bg-brand-primary/10 rounded-2xl text-brand-primary group-hover:scale-110">
+                  <BookOpenIcon className="h-6 w-6" />
+                </div>
+                <h2 className="text-2xl font-extrabold font-outfit text-brand-dark dark:text-white tracking-tight leading-none">{t('hadithOfTheDay')}</h2>
             </div>
-            {renderContent()}
+            
+            <div className="relative z-10 font-inter">
+              {renderContent()}
+            </div>
         </div>
     );
 };

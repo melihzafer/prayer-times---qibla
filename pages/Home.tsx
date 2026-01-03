@@ -69,21 +69,45 @@ const Home: React.FC<HomeProps> = ({
   }
 
   return (
-    <div className='space-y-6'>
-      <PrayerTimesDisplay
-        prayerTimes={prayerTimes}
-        hijriDate={hijriDate}
-        nextPrayer={nextPrayer}
-        countdown={countdown}
-        selectedDate={selectedDate}
-        goToPreviousDay={goToPreviousDay}
-        goToNextDay={goToNextDay}
-        t={t}
-        user={user}
-        togglePrayerNotification={togglePrayerNotification}
-      />
-      {nextPrayer && <ContextualHadith currentPrayerName={nextPrayer.name} t={t} />}
-      {stableCoordinates && <NearbyMosques onOpenModal={() => setShowMosquesModal(true)} t={t} />}
+    <div className='space-y-10 pb-10'>
+      <section>
+        <PrayerTimesDisplay
+          prayerTimes={prayerTimes}
+          hijriDate={hijriDate}
+          nextPrayer={nextPrayer}
+          countdown={countdown}
+          selectedDate={selectedDate}
+          goToPreviousDay={goToPreviousDay}
+          goToNextDay={goToNextDay}
+          t={t}
+          user={user}
+          togglePrayerNotification={togglePrayerNotification}
+        />
+      </section>
+
+      {nextPrayer && (
+        <section className="animate-fadeIn" style={{ animationDelay: '0.2s' }}>
+          <div className="flex items-center space-x-2 mb-4 px-1">
+             <div className="w-1 h-6 bg-brand-primary rounded-full"></div>
+             <h2 className="text-xl font-extrabold font-outfit text-brand-dark dark:text-white uppercase tracking-tight">
+               {t('inspiration') || 'Daily Inspiration'}
+             </h2>
+          </div>
+          <ContextualHadith currentPrayerName={nextPrayer.name} t={t} />
+        </section>
+      )}
+
+      {stableCoordinates && (
+        <section className="animate-fadeIn" style={{ animationDelay: '0.4s' }}>
+          <div className="flex items-center space-x-2 mb-4 px-1">
+             <div className="w-1 h-6 bg-brand-accent rounded-full"></div>
+             <h2 className="text-xl font-extrabold font-outfit text-brand-dark dark:text-white uppercase tracking-tight">
+               {t('nearbyMosques') || 'Nearby Mosques'}
+             </h2>
+          </div>
+          <NearbyMosques onOpenModal={() => setShowMosquesModal(true)} t={t} />
+        </section>
+      )}
     </div>
   );
 };

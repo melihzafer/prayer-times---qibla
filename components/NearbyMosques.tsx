@@ -19,21 +19,25 @@ const NearbyMosques: React.FC<NearbyMosquesProps> = ({ onOpenModal, t }) => {
   }
 
   return (
-    <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 flex flex-col items-center justify-center space-y-4">
-      <div className="flex items-center space-x-2">
-        <MosqueIcon />
-        <h2 className="text-xl font-bold">{t('nearbyMosques')}</h2>
+    <div className="glass bg-white/40 dark:bg-brand-dark/40 rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.08)] p-8 border border-white/40 dark:border-white/10 flex flex-col items-center justify-center space-y-6 relative overflow-hidden group">
+      <div className="absolute top-0 right-0 w-24 h-24 bg-brand-accent/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-2xl"></div>
+      
+      <div className="flex items-center space-x-3 transition-transform duration-300 group-hover:scale-105 relative z-10">
+        <div className="p-3 bg-brand-accent/10 rounded-2xl text-brand-accent">
+          <MosqueIcon />
+        </div>
+        <h2 className="text-2xl font-extrabold font-outfit text-brand-dark dark:text-white tracking-tight leading-none">{t('nearbyMosques')}</h2>
       </div>
 
       <button
         onClick={onOpenModal}
-        className="flex items-center justify-center px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 active:scale-95 transition-all font-semibold"
+        className="w-full relative flex items-center justify-center px-8 py-4 bg-gradient-to-r from-brand-accent to-brand-primary text-white rounded-2xl hover:shadow-[0_10px_30px_rgba(6,182,212,0.4)] active:scale-[0.98] transition-all duration-300 font-bold font-outfit text-lg tracking-tight z-10"
       >
-        <SparklesIcon className="w-5 h-5 mr-2" />
+        <SparklesIcon className="w-6 h-6 mr-3 animate-pulse" />
         {t('findNearbyMosques')}
       </button>
 
-      <p className="text-xs text-center text-gray-500 dark:text-gray-400">
+      <p className="text-[10px] text-center font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest px-4 leading-relaxed relative z-10 opacity-70">
         {t('geminiInfo')}
       </p>
     </div>

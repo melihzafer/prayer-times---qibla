@@ -9,10 +9,18 @@ interface InspirationProps {
 
 const Inspiration: React.FC<InspirationProps> = ({ t }) => {
   return (
-    <div className="space-y-6">
-      <h1 className="text-2xl font-bold text-gray-800 dark:text-gray-100 text-center mb-4">{t('inspiration')}</h1>
-      <HadithOfTheDay t={t} />
-      <AsmaUlHusna t={t} />
+    <div className="space-y-12 animate-fadeIn pb-10">
+      <div className="text-center space-y-2 mb-8">
+        <h1 className="text-4xl font-extrabold font-outfit text-brand-dark dark:text-white tracking-tighter">
+          {t('inspiration')}
+        </h1>
+        <div className="w-12 h-1 bg-brand-accent mx-auto rounded-full"></div>
+      </div>
+
+      <div className="space-y-10">
+        <HadithOfTheDay t={t} />
+        <AsmaUlHusna t={t} />
+      </div>
     </div>
   );
 };

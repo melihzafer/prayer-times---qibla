@@ -43,8 +43,8 @@ export const ar = {
   liveCompassActive: 'البوصلة الحية نشطة',
   compassNotSupported: 'اتجاه الجهاز غير مدعوم على هذا الجهاز.',
   permissionDenied: 'تم رفض إذن الوصول إلى اتجاه الجهاز.',
-  cameraError: 'تعذر الوصول إلى الكاميرا. يرجى التحقق من الأذونات.',
-  cameraPermissionDenied: 'تم رفض إذن الكاميرا. قم بتمكينه لاستخدام البوصلة الحية.',
+
+
   calibrateCompass: 'معايرة البوصلة',
   resetCalibration: 'إعادة ضبط المعايرة',
   qiblaFound: 'تم العثور على القبلة!',
@@ -52,6 +52,19 @@ export const ar = {
   keepSearching: 'استمر في الدوران...',
   away: 'متبقية',
   googleQiblaFinder: 'محدد القبلة من Google',
+  howToCalibrate: 'كيفية المعايرة؟',
+  calibrateInstructions: 'يرجى تحريك هاتفك بحركة شكل 8 كما هو موضح لمعايرة مستشعر البوصلة.',
+  imReady: 'أنا مستعد',
+  calibrationGuideStep1: 'أمسك هاتفك بشكل مسطح أمامك.',
+  calibrationGuideStep2: 'حركه بحركة شكل 8.',
+  calibrationGuideStep3: 'كرر حتى تتحسن الدقة.',
+  usingGoogleQibla: 'استخدام محدد القبلة من Google',
+  googleQiblaDesc: 'للتحقق، يمكنك المقارنة مع محدد القبلة من Google. إذا كانت دقة البوصلة لدينا منخفضة، يمكن لـ Google المساعدة في إعادة معايرة مستشعرات جهازك.',
+  dontShowAgain: "لا تظهر مرة أخرى",
+  connectionNotSecure: "الاتصال غير آمن",
+  insecureContextWarning: "المتصفح يحظر الوصول إلى البوصلة والكاميرا في هذا الاتصال. لإصلاح ذلك، يرجى استخدام 'localhost' أو اتصال HTTPS.",
+  cameraError: "خطأ في الكاميرا",
+  cameraPermissionDenied: "تم رفض الوصول إلى الكاميرا أو تم حظره بواسطة المتصفح.",
 
   // Nearby Mosques
   findNearbyMosques: 'البحث عن مساجد قريبة',

@@ -31,40 +31,50 @@ const ContextualHadith: React.FC<ContextualHadithProps> = ({ currentPrayerName, 
   if (!relevantHadith) return null;
 
   return (
-    <div className="mt-6 bg-gradient-to-r from-emerald-50 to-teal-50 dark:from-emerald-900/20 dark:to-teal-900/20 rounded-xl p-6 border border-emerald-100 dark:border-emerald-800/50">
-      <div className="flex items-center gap-2 mb-3">
-        <span className="text-xl">💡</span>
-        <h3 className="font-bold text-emerald-800 dark:text-emerald-300">
-          {t('remindersFor')} {currentPrayerName}
-        </h3>
+    <div className="glass bg-white/40 dark:bg-brand-dark/40 rounded-3xl p-8 border border-white/40 dark:border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.08)] relative overflow-hidden group">
+      <div className="absolute -top-12 -left-12 w-24 h-24 bg-brand-accent/10 rounded-full blur-2xl"></div>
+      
+      <div className="flex items-center gap-3 mb-6 relative z-10">
+        <div className="p-3 bg-brand-accent/10 rounded-2xl text-brand-accent group-hover:scale-110 transition-transform duration-300">
+          <span className="text-xl leading-none">💡</span>
+        </div>
+        <div className="flex flex-col">
+          <h3 className="font-extrabold font-outfit text-brand-dark dark:text-white tracking-tight leading-none">
+            {t('remindersFor')} {currentPrayerName}
+          </h3>
+          <span className="text-[10px] font-bold text-brand-accent uppercase tracking-[0.2em] mt-1 opacity-70">Contextual Insight</span>
+        </div>
       </div>
 
-      <blockquote className="italic text-gray-700 dark:text-gray-200 text-lg mb-4 font-serif">
-        "{relevantHadith.hadith_english}"
+      <blockquote className="relative p-6 bg-brand-accent/5 rounded-2xl border border-brand-accent/10 italic text-gray-700 dark:text-gray-200 group-hover:bg-brand-accent/[0.07] transition-colors duration-300 font-inter mb-6">
+        <div className="absolute -top-4 -left-2 text-6xl text-brand-accent/10 font-serif opacity-30">"</div>
+        <p className="text-lg leading-relaxed font-medium">
+          {relevantHadith.hadith_english}
+        </p>
       </blockquote>
 
-      <div className="flex justify-between items-end">
+      <div className="flex justify-between items-end mb-6">
          {/* Arabic Text (Smaller, for reference) */}
-         <p className="text-right font-arabic text-gray-500 dark:text-gray-300 text-sm w-full opacity-80" dir="rtl">
+         <p className="text-right font-arabic text-gray-500 dark:text-gray-300 text-sm w-full opacity-60 leading-loose italic" dir="rtl">
            {relevantHadith.hadith_arabic}
          </p>
       </div>
       
-      <div className="mt-3 pt-3 border-t border-emerald-200 dark:border-emerald-800/50 flex justify-between items-center text-xs text-emerald-700 dark:text-emerald-300 font-medium">
+      <div className="pt-4 border-t border-brand-accent/10 flex justify-between items-center text-[11px] font-bold text-brand-accent/80 uppercase tracking-widest font-outfit">
         <span>{relevantHadith.book}</span>
-        <span className="flex items-center gap-1">
-            Ref: {relevantHadith.refno}
+        <div className="flex items-center gap-3">
+            <span>Ref: {relevantHadith.refno}</span>
             {relevantHadith.url && (
                  <a 
                  href={relevantHadith.url}
                  target="_blank"
                  rel="noopener noreferrer"
-                 className="ml-2 hover:underline text-blue-500"
+                 className="p-1.5 bg-brand-accent/10 rounded-lg hover:bg-brand-accent/20 transition-colors"
               >
                  🔗
               </a>
             )}
-        </span>
+        </div>
       </div>
     </div>
   );
