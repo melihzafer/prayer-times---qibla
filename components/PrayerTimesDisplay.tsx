@@ -98,18 +98,18 @@ const PrayerTimesDisplay: React.FC<PrayerTimesDisplayProps> = ({
                 }`
               }
             >
-               <div className="flex items-center space-x-4 rtl:space-x-reverse">
-                  <div className={`p-3 rounded-xl transition-colors duration-300 
-                    ${isActive ? 'bg-white/20 text-white' : 'bg-brand-primary/10 text-brand-primary'}`}>
-                    {prayerIcons[name] || <ClockIcon/>}
-                  </div>
-                  <div className="flex flex-col">
-                    <span className="font-bold text-lg font-outfit tracking-tight">{t(name)}</span>
-                    <span className={`text-[10px] font-bold uppercase tracking-widest opacity-60`}>
-                      {isActive ? (t('current') || 'Current') : ''}
-                    </span>
-                  </div>
-               </div>
+                <div className="flex items-center space-x-4 rtl:space-x-reverse min-w-0 flex-1">
+                   <div className={`p-3 rounded-xl transition-colors duration-300 flex-shrink-0 
+                     ${isActive ? 'bg-white/20 text-white' : 'bg-brand-primary/10 text-brand-primary'}`}>
+                     {prayerIcons[name] || <ClockIcon/>}
+                   </div>
+                   <div className="flex flex-col min-w-0">
+                     <span className="font-bold text-lg font-outfit tracking-tight truncate">{t(name)}</span>
+                     <span className={`text-[10px] font-bold uppercase tracking-widest opacity-60 truncate`}>
+                       {isActive ? (t('current') || 'Current') : ''}
+                     </span>
+                   </div>
+                </div>
               <div className="flex items-center space-x-4 rtl:space-x-reverse">
                   <span className="font-extrabold text-xl font-outfit tracking-tighter">{time}</span>
                   {name !== 'Sunrise' && (
