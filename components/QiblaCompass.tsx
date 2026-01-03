@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { useDeviceOrientation } from '../hooks/useDeviceOrientation';
 import { Translator, Coordinates } from '../types';
-import { CameraIcon } from './Icons';
+import { CameraIcon, InformationCircleIcon, AlertTriangleIcon } from './Icons';
 
 interface QiblaCompassProps {
   direction: number | null;
@@ -207,9 +207,10 @@ const QiblaCompass: React.FC<QiblaCompassProps> = ({ direction, location, t }) =
       
       {/* Calibration Alert */}
        {!isAccurate && (
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 w-3/4 text-center bg-brand-primary/10 dark:bg-brand-primary/20 p-3 rounded-2xl border border-brand-primary/20 backdrop-blur-md animate-pulse">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 w-3/4 text-center bg-brand-primary/10 dark:bg-brand-primary/20 p-4 rounded-2xl border border-brand-primary/20 backdrop-blur-md animate-pulse flex flex-col items-center gap-2">
+            <AlertTriangleIcon className="w-5 h-5 text-brand-primary" />
             <span className="text-[10px] font-black text-brand-primary dark:text-brand-primary uppercase tracking-[0.2em] leading-tight block">
-               ⚠️ {t('calibrateCompass') || "Figure-8 Motion Required"}
+               {t('calibrateCompass') || "Figure-8 Motion Required"}
             </span>
           </div>
         )}
@@ -370,7 +371,7 @@ const QiblaCompass: React.FC<QiblaCompassProps> = ({ direction, location, t }) =
               {/* Calibration Warning */}
               {!isAccurate && (
                 <div className="glass bg-yellow-500/10 border-yellow-500/30 rounded-2xl px-6 py-3 flex items-center gap-3 animate-pulse">
-                  <span className="text-lg">⚠️</span>
+                  <AlertTriangleIcon className="w-5 h-5 text-yellow-500" />
                   <div className="flex flex-col">
                     <span className="text-[10px] font-black text-yellow-500 uppercase tracking-widest">Calibration Low</span>
                     <span className="text-xs text-white/60 font-medium">Wave phone in infinity motion</span>
@@ -404,6 +405,12 @@ const QiblaCompass: React.FC<QiblaCompassProps> = ({ direction, location, t }) =
                       ))}
                    </div>
                 )}
+              </div>
+              
+              {/* Browser Support Notice */}
+              <div className="glass bg-white/5 border-white/10 rounded-full px-4 py-1.5 flex items-center gap-2 opacity-60">
+                <InformationCircleIcon className="w-3 h-3 text-white/70" />
+                <span className="text-[10px] font-medium text-white/70 tracking-wide uppercase">{t('browserNotice')}</span>
               </div>
             </div>
           </>
@@ -453,6 +460,16 @@ const QiblaCompass: React.FC<QiblaCompassProps> = ({ direction, location, t }) =
         </button>
       )}
 
+      {/* Browser Compatibility Footer Notice */}
+      <div className="flex items-center gap-2 px-6 py-3 bg-slate-50 dark:bg-white/5 rounded-2xl border border-slate-100 dark:border-white/5 transition-all hover:bg-slate-100 dark:hover:bg-white/10 group/notice">
+        <div className="w-6 h-6 rounded-full bg-brand-primary/10 flex items-center justify-center group-hover/notice:scale-110 transition-transform">
+          <InformationCircleIcon className="w-3 h-3 text-brand-primary" />
+        </div>
+        <p className="text-[10px] font-black uppercase tracking-[0.15em] text-slate-400 dark:text-white/30 leading-tight">
+          {t('browserNotice')}
+        </p>
+      </div>
+      
       {/* Google Qibla Finder Button */}
       <a 
         href="https://qiblafinder.withgoogle.com/"

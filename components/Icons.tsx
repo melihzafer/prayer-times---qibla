@@ -22,7 +22,8 @@ import {
     HiXMark,
     HiCheck,
     HiExclamationTriangle,
-    HiArrowRight
+    HiArrowRight,
+    HiInformationCircle
 } from "react-icons/hi2";
 import { FaMosque } from "react-icons/fa6";
 import { LuTarget, LuCompass } from "react-icons/lu";
@@ -63,6 +64,7 @@ export const XIcon = wrapIcon(HiXMark);
 export const CheckIcon = wrapIcon(HiCheck);
 export const AlertTriangleIcon = wrapIcon(HiExclamationTriangle);
 export const ArrowRightIcon = wrapIcon(HiArrowRight);
+export const InformationCircleIcon = wrapIcon(HiInformationCircle, "h-4 w-4");
 export const TargetIcon = wrapIcon(LuTarget); 
 
 // Mosque is from Fa6 - doesn't support strokeWidth in the same way but consistency is key

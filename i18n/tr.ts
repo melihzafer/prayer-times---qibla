@@ -65,6 +65,7 @@ export const tr = {
   insecureContextWarning: "Tarayıcınız bu bağlantıda Pusula ve Kamera erişimini engelliyor. Düzeltmek için lütfen 'localhost' veya HTTPS bağlantısı kullanın.",
   cameraError: "Kamera Hatası",
   cameraPermissionDenied: "Kamera erişimi reddedildi veya tarayıcınız tarafından engellendi.",
+  browserNotice: "AR ve Pusula özellikleri en iyi Google Chrome'da çalışır.",
 
   // Nearby Mosques
   findNearbyMosques: 'Yakındaki Camileri Bul',

@@ -65,6 +65,7 @@ export const ar = {
   insecureContextWarning: "المتصفح يحظر الوصول إلى البوصلة والكاميرا في هذا الاتصال. لإصلاح ذلك، يرجى استخدام 'localhost' أو اتصال HTTPS.",
   cameraError: "خطأ في الكاميرا",
   cameraPermissionDenied: "تم رفض الوصول إلى الكاميرا أو تم حظره بواسطة المتصفح.",
+  browserNotice: "تعمل ميزات الواقع المعزز والبوصلة بشكل أفضل في متصفح Google Chrome.",
 
   // Nearby Mosques
   findNearbyMosques: 'البحث عن مساجد قريبة',

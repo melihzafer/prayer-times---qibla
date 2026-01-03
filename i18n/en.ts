@@ -65,6 +65,7 @@ export const en = {
   insecureContextWarning: "Your browser blocks Compass and Camera access on this connection. To fix this, please use 'localhost' or an HTTPS connection.",
   cameraError: "Camera Error",
   cameraPermissionDenied: "Access to camera was denied or is blocked by your browser.",
+  browserNotice: "AR & Compass features work best in Google Chrome.",
 
   // Nearby Mosques
   findNearbyMosques: 'Find Nearby Mosques',
